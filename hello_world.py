@@ -2,7 +2,6 @@ import genesis as gs
 
 gs.init(
     backend=gs.gpu,
-    theme="light",
 )
 
 scene = gs.Scene(
@@ -22,8 +21,8 @@ scene = gs.Scene(
         plane_reflection=True,
         ambient_light=(0.1, 0.1, 0.1),
     ),
-    # renderer=gs.renderers.RayTracer()
-    renderer=gs.renderers.Rasterizer()
+    renderer=gs.renderers.RayTracer()
+    # renderer=gs.renderers.Rasterizer()
 )
 plane = scene.add_entity(gs.morphs.Plane())
 franka = scene.add_entity(

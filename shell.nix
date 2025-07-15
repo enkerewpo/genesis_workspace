@@ -29,6 +29,12 @@ pkgs.mkShell {
     export CUDA_HOME=${cuda_home}
     export PATH=$CUDA_HOME/bin:$PATH
     export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+    # add nix libs to LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${pkgs.lib.makeLibraryPath [
+      pkgs.gcc11
+      pkgs.gcc11.cc.lib
+      pkgs.gcc11.libc
+    ]}
     export PYTHONHOME=${python_home}
     export PATH=$PYTHONHOME/bin:$PATH
     export PYTHONPATH=$PYTHONHOME/lib/python${python_version}/site-packages:$PYTHONPATH
